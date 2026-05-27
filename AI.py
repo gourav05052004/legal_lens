@@ -13,7 +13,10 @@ def process_text_with_groq(text):
     if not api_key:
         raise ValueError("API key not found. Please set the 'GROQ_API_KEY' in the .env file.")
 
-    prompt = f"""Please act as a legal advisor and review the following contract or terms and conditions {text}. I need you to perform a two-step analysis:
+    prompt = f"""Please act as a legal advisor and review the following contract or terms and conditions {text}. 
+First, evaluate the overall risk level of this document and start your response EXACTLY with 'RISK_LEVEL: High', 'RISK_LEVEL: Medium', or 'RISK_LEVEL: Low' on the first line.
+
+Then perform a two-step analysis:
 1. Document Summary and Overall Assessment:
     Provide a concise summary of the document, highlighting key points and general themes.
     Based on this summary, assess the document's favorability. Indicate if the contract appears generally favorable, risky, or in need of specific revisions to make it less risky.
